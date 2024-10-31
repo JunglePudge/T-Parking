@@ -1,12 +1,246 @@
-<!-- app/templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Image
+        {
+            margin-top: -1335px;
+            margin-left: 21px;
+        }
+        .Text
+        {
+            font: 24px Geologica;
+            margin-top: -80px;
+            margin-left: 85px;
+        }
+
+        .Middle
+        {
+            width: 100%;
+            height: 889px;
+            background-color: rgb(233, 233, 233);
+            margin-top: 135px;
+        }
+        .Down
+        {
+            width: 100%;
+            height: 350px;
+            background-color: #333333;
+        }
+
+        .Buttons
+        {
+        display: flex;
+        justify-content: space-between;
+        }
+        .Input
+        {
+            width: 108px;
+            height: 49px;
+            margin-left: 1130px;
+            margin-top: -70px;
+            border-radius: 15px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            box-shadow: -1px 5px 5px darkgray;
+            cursor: pointer;
+        }
+        .Input:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .Hello
+        {
+            width: 204px;
+            height: 49px;
+            margin-right: 30px;
+            margin-top: -70px;
+            border-radius: 15px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            box-shadow: -1px 5px 5px darkgray;
+            cursor: pointer;
+        }
+        .Hello:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .Bigtext
+        {
+            font: 40px Geologica;
+            text-align: center;
+            margin-top: 96px;
+        }
+
+        .Center
+        {
+            display: flex;
+            justify-content: center;
+        }
+        .Onebutton
+        {
+            font: 30px AkrobatLight;
+            width: 286px;
+            height: 76px;
+            border-radius: 15px;
+            background-color: gold;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+            margin-top: 10px;
+        }
+        .Onebutton:active 
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .Imageup
+        {
+            margin-top: 660px;
+            margin-left: 73px;
+        }
+        .Textup
+        {
+            color: white;
+            font: 24px Geologica;
+            margin-left: 143px;
+            margin-top: -83px;
+        }
+
+        .First
+        {
+            color: white;
+            margin-top: 45px;
+            margin-left: 82px;
+            font: 15px Abel;
+        }
+        .Second
+        {
+            color: white;
+            margin-top: -34px;
+            margin-left: 207px;
+            font: 15px Abel;
+        }
+        .Third
+        {
+            color: white;
+            margin-left: 82px;
+            margin-top: 40px;
+            font: 15px Abel;
+        }
+        .Line
+        {
+            width: 1325px;
+            margin-left: 80px; 
+            margin-top: 34px;
+            border-top: 3px solid rgb(95, 92, 92);
+        }
+        .Fourth
+        {
+            color: white;
+            margin-left: 82px;
+            margin-top: 34px;
+            font: 15px Abel;
+        }
+
+        .Logo1
+        {
+            margin-left: 1248px;
+            margin-top: -45px;
+        }
+        .Logo2
+        {
+            margin-left: 1313px;
+            margin-top: -45px;
+        }
+
+        @font-face
+        {
+            font-family: Geologica;
+            src: url(/static/fonts/Geologica-VariableFont_CRSV\,SHRP\,slnt\,wght.ttf);
+        }
+        @font-face
+        {
+            font-family: AkrobatLight;
+            src: url(/static/fonts/Akrobat-Light.ttf);
+        }
+        @font-face
+        {
+            font-family: Abel;
+            src: url(/static/fonts/abelrusbydaymarius.ttf);
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Main Page</h1>
-    <a href="/auth/login">Login</a> | <a href="/auth/register">Register</a>
+    <div class="Background">
+        <div class="Middle">
+        </div>
+        <div class="Down">
+        </div>
+    </div>
+
+    <div class="Logo">
+        <div class="Image">
+            <img src="static/images/logo.JPG" alt="" width="62px" height="69px">
+        </div>
+        <div class="Text">
+            <p><b>ПАРКОВКА</b></p>
+        </div>
+    </div>
+
+    <div class="Buttons">
+        <a href="/auth/login"><button class="Input">Вход</button></a>
+        <a href="/auth/register"><button class="Hello">Регистрация</button></a>
+    </div>
+
+
+    <div class="Bigtext">
+        <p><b>Для тех - кто не хочет искать</b></p>
+    </div>
+
+    <div class="Center">
+        <button class="Onebutton">Посмотреть места</button>
+    </div>
+
+    <div class="Logoup">
+        <div class="Imageup">
+            <img src="static/images//logo3.png" alt="" width="69px" height="69px">
+        </div>
+        <div class="Textup">
+            <p><b>ПАРКОВКА</b></p>
+        </div>
+    </div>
+
+    <div class="Textdown">
+        <div class="First">
+            <p>О приложении</p>
+        </div>
+        <div class="Second">
+            <p>Контакты</p>
+        </div>
+        <div class="Third">
+            <p>При положительном решении платформы профиль будет подтвержден в день оформления заявки либо на следующий день, за исключением регионов, где приложение не доступно. Уточнить информацию о перечне населенных пунктов, где приложение доступно , можно по каналам дистанционного обслуживания.</p>
+        </div>
+        <div class="Line">
+        </div>
+        <div class="Fourth">
+            <p>© 2024—2024, АО «ТПарковка», официальный сайт, универсальная лицензия ЦБ РФ № 2673</p>
+        </div>
+    </div>
+
+    <div class="Twolog0">
+        <div class="Logo1">
+            <img src="static/images//telegram.png" alt="" width="42px" height="42px">
+        </div>
+        <div class="Logo2">
+            <img src="static/images//vk.png" alt="" width="44px" height="35px">
+        </div>
+    </div>
 </body>
 </html>

@@ -2,6 +2,7 @@
 from fastapi import FastAPI, Depends, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from app.database import engine, get_db
 from app.models import Base, User
@@ -14,6 +15,9 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 templates = Jinja2Templates(directory="app/templates")
 
+# Подключаем статические файлы для доступа к /static
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
 # Подключаем маршруты для авторизации и регистрации
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
 
@@ -22,7 +26,16 @@ async def read_main(request: Request):
     """Главная страница с кнопками для перехода на авторизацию и регистрацию"""
     return templates.TemplateResponse("index.html", {"request": request})
 
-# Маршрут для обработки формы регистрации
+@app.get("/auth/login", response_class=HTMLResponse)
+async def login_page(request: Request):
+    """Страница авторизации"""
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/auth/register", response_class=HTMLResponse)
+async def register_page(request: Request):
+    """Страница регистрации"""
+    return templates.TemplateResponse("register.html", {"request": request})
+
 @app.post("/auth/register", response_class=HTMLResponse)
 async def register_user(
     request: Request,
@@ -43,7 +56,6 @@ async def register_user(
 
     return RedirectResponse(url="/auth/login", status_code=303)
 
-# Маршрут для обработки формы авторизации
 @app.post("/auth/login", response_class=HTMLResponse)
 async def login_user(
     request: Request,
