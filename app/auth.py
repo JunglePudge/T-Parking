@@ -1,43 +1,83 @@
-# app/auth.py
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Request, Form, Depends, HTTPException, Response
+from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
-from app.models import User
-from app.database import get_db
-from pydantic import BaseModel
 from passlib.context import CryptContext
+from app.database import get_db
+from app.models import User
+import jwt
+import datetime
 
 router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+SECRET_KEY = "your_secret_key"
 
-class RegisterUser(BaseModel):
-    username: str
-    email: str
-    password: str
+# Регистрация пользователя
+@router.post("/register", response_class=HTMLResponse)
+async def register_user(
+    request: Request,
+    db: Session = Depends(get_db),
+    fullname: str = Form(...),
+    email: str = Form(...),
+    password: str = Form(...),
+    confirm_password: str = Form(...),
+    carplate: str = Form(None),
+):
+    # Проверка совпадения паролей
+    if password != confirm_password:
+        return {"error": "Пароли не совпадают"}
 
-class LoginUser(BaseModel):
-    username: str
-    password: str
-
-@router.post("/register", status_code=status.HTTP_201_CREATED)
-def register_user(user: RegisterUser, db: Session = Depends(get_db)):
-    # Проверяем, что пользователь не существует
-    existing_user = db.query(User).filter(User.username == user.username).first()
+    # Проверка существующего пользователя
+    existing_user = db.query(User).filter(User.email == email).first()
     if existing_user:
-        raise HTTPException(status_code=400, detail="Username already registered")
+        return {"error": "Пользователь с таким email уже существует"}
 
-    # Создаем нового пользователя
-    hashed_password = pwd_context.hash(user.password)
-    new_user = User(username=user.username, email=user.email, hashed_password=hashed_password)
+    # Хэширование пароля
+    hashed_password = pwd_context.hash(password)
+    new_user = User(
+        FullName=fullname,
+        email=email,
+        password=hashed_password,
+        CarPlate=carplate,
+        status="standard",
+    )
     db.add(new_user)
     db.commit()
-    db.refresh(new_user)
-    return {"msg": "User registered successfully"}
+    return RedirectResponse(url="/auth/login", status_code=303)
 
-@router.post("/login")
-def login_user(user: LoginUser, db: Session = Depends(get_db)):
-    # Ищем пользователя в базе данных
-    db_user = db.query(User).filter(User.username == user.username).first()
-    if not db_user or not db_user.verify_password(user.password):
-        raise HTTPException(status_code=400, detail="Incorrect username or password")
+# Авторизация пользователя
+@router.post("/login", response_class=HTMLResponse)
+async def login_user(
+    request: Request,
+    response: Response,
+    db: Session = Depends(get_db),
+    email: str = Form(...),
+    password: str = Form(...),
+):
+    user = db.query(User).filter(User.email == email).first()
+    if not user or not pwd_context.verify(password, user.password):
+        return {"error": "Неверные учетные данные"}
 
-    return {"msg": "Login successful"}
+    # Генерация токена
+    expiration = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+    token = jwt.encode({"sub": user.UserID, "exp": expiration}, SECRET_KEY, algorithm="HS256")
+
+    # Сохранение токена в cookie
+    response = RedirectResponse(url="/", status_code=303)
+    response.set_cookie(key="access_token", value=token, httponly=True)
+    return response
+
+# Проверка аутентификации
+def get_current_user(request: Request, db: Session = Depends(get_db)):
+    token = request.cookies.get("access_token")
+    if not token:
+        raise HTTPException(status_code=401, detail="Необходимо войти в систему")
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        user = db.query(User).filter(User.UserID == payload["sub"]).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Пользователь не найден")
+        return user
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Срок действия токена истек")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Неверный токен")
