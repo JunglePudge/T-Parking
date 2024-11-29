@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парковочные места</title>
+    <style>
+        .Middle
+        {
+            background-color: rgb(233, 233, 233);
+            margin-top: 135px;
+            width: 100%;
+            height: 889px;
+        }
+        .Down
+        {
+            background-color: #333333;
+            width: 100%;
+            height: 350px;
+        }
+
+        .Image
+        {
+            margin-top: -1335px;
+            margin-left: 21px;
+        }
+        .Text
+        {
+            font: 24px Geologica;
+            margin-top: -80px;
+            margin-left: 85px;
+        }
+
+        a
+        {
+            text-decoration: none;
+            color: black;
+        }
+
+        form[name="button"]
+        {
+            margin-top: -70px;
+            margin-left: 1250px;
+        }
+        .Button
+        {
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            width: 204px;
+            height: 49px;
+            font: 24px AkrobatLight;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .Button:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .Textpark
+        {
+            font: 24px AkrobatLight;
+            margin-left: 48px;
+            margin-top: 100px;
+        }
+
+        .Linepark
+        {
+            width: 180px;
+            border-top: 3px solid gold;
+            margin-top: -30px;
+            margin-left: 47px;
+
+        }
+
+        .Texts
+        {
+            font: 24px AkrobatLight;
+        }
+        .Text1
+        {
+            margin-left: 48px;
+        }
+        .Text2
+        {
+            margin-top: -54px;
+            margin-left: 130px;
+        }
+        .Text3
+        {
+            margin-top: -54px;
+            margin-left: 212px;
+        }
+
+        .Line1
+        {
+            width: 60px;
+            border-top: 3px solid gold;
+            margin-top: -30px;
+            margin-left: 47px;
+
+        }
+
+        .B1
+        {
+            width: 73px;
+            height: 73px;
+            background-color: greenyellow;
+            font: 24px AkrobatLight;
+            border: 2px solid greenyellow;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 90px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B1:active
+        {
+            box-shadow: inset 0px 0px 5px green;
+        }
+        .B2
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B2:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B3
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B3:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B4
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B4:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B5
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B5:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B6
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B6:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B7
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B7:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B8
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B8:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B9
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B9:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B10
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B10:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B11
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B11:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B12
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B12:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B13
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B13:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B14
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 90px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B14:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B15
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B15:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B16
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B16:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B17
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B17:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B18
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B18:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B19
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B19:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B20
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B20:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B21
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B21:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B22
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B22:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B23
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B23:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B24
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B24:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B25
+        {
+            width: 73px;
+            height: 73px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B25:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B26
+        {
+            width: 73px;
+            height: 73px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 27px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B26:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+
+        .Imageup
+        {
+            margin-top: 550px;
+            margin-left: 73px;
+        }
+        .Textup
+        {
+            color: white;
+            font: 24px Geologica;
+            margin-left: 143px;
+            margin-top: -83px;
+        }
+
+        .First
+        {
+            color: white;
+            margin-top: 45px;
+            margin-left: 82px;
+            font: 15px Abel;
+        }
+        .Second
+        {
+            color: white;
+            margin-top: -34px;
+            margin-left: 207px;
+            font: 15px Abel;
+        }
+        .Third
+        {
+            color: white;
+            margin-left: 82px;
+            margin-top: 40px;
+            margin-right: 25px;
+            font: 15px Abel;
+        }
+        .Line
+        {
+            width: 1325px;
+            margin-left: 80px; 
+            margin-top: 34px;
+            border-top: 3px solid rgb(95, 92, 92);
+        }
+        .Fourth
+        {
+            color: white;
+            margin-left: 82px;
+            margin-top: 34px;
+            font: 15px Abel;
+        }
+
+        .Logo1
+        {
+            margin-left: 1248px;
+            margin-top: -45px;
+        }
+        .Logo2
+        {
+            margin-left: 1313px;
+            margin-top: -45px;
+        }
+
+        @font-face {
+
+            font-family: Geologica;
+            src: url("/static/fonts/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf");
+        }
+        @font-face {
+
+            font-family: AkrobatLight;
+            src: url("/static/fonts/Akrobat-Light.ttf");
+        }
+        @font-face {
+
+            font-family: Abel;
+            src: url("/static/fonts/abelrusbydaymarius.ttf");
+        }
+    </style>
+</head>
+<body>
+    <div class="Background">
+        <div class="Middle">
+        </div>
+        <div class="Down">
+        </div>
+    </div>
+
+    <div class="Logo">
+        <div class="Image">
+            <a href="/"><img src="/static/images/logo.JPG" alt="" width="62px" height="69px"></a>
+        </div>
+        <div class="Text">
+            <a href="/"><p><b>ПАРКОВКА</b></p></a>
+        </div>
+    </div>
+
+    <div>
+        <form action="" name="button">
+            <button class="Button">Личный кабинет</button>
+        </form>
+    </div>
+
+    <div class="Textpark">
+        <p>Парковочные места</p>
+    </div>
+
+    <div class="Linepark">
+    </div>
+
+    <div class="Texts">
+        <div class="Text1">
+            <p>1 Этаж</p>
+        </div>
+        <div class="Text2">
+            <p>2 Этаж</p>
+        </div>
+        <div class="Text3">
+            <p>3 Этаж</p>
+        </div>
+    </div>
+
+    <div class="Line1">
+    </div>
+
+    <div class="Buttons1">
+        <button class="B1">1</button>
+        <button class="B2">2</button>
+        <button class="B3">3</button>
+        <button class="B4">4</button>
+        <button class="B5">5</button>
+        <button class="B6">6</button>
+        <button class="B7">7</button>
+        <button class="B8">8</button>
+        <button class="B9">9</button>
+        <button class="B10">10</button>
+        <button class="B11">11</button>
+        <button class="B12">12</button>
+        <button class="B13">13</button>
+    </div>
+    <div class="Buttons2">
+        <button class="B14">14</button>
+        <button class="B15">15</button>
+        <button class="B16">16</button>
+        <button class="B17">17</button>
+        <button class="B18">18</button>
+        <button class="B19">19</button>
+        <button class="B20">20</button>
+        <button class="B21">21</button>
+        <button class="B22">22</button>
+        <button class="B23">23</button>
+        <button class="B24">24</button>
+        <button class="B25">25</button>
+        <button class="B26">26</button>
+    </div>
+
+    <div class="Logoup">
+        <div class="Imageup">
+            <img src="/static/images/logo3.png" alt="" width="69px" height="68px">
+        </div>
+        <div class="Textup">
+            <p><b>ПАРКОВКА</b></p>
+        </div>
+    </div>
+
+    <div class="Textdown">
+        <div class="First">
+            <p>О приложении</p>
+        </div>
+        <div class="Second">
+            <p>Контакты</p>
+        </div>
+        <div class="Third">
+            <p>При положительном решении платформы профиль будет подтвержден в день оформления заявки либо на следующий день, за исключением регионов, где приложение не доступно. Уточнить информацию о перечне населенных пунктов, где приложение доступно , можно по каналам дистанционного обслуживания.</p>
+        </div>
+        <div class="Line">
+        </div>
+        <div class="Fourth">
+            <p>© 2024—2024, АО «ТПарковка», официальный сайт, универсальная лицензия ЦБ РФ № 2673</p>
+        </div>
+    </div>
+
+    <div class="Twolog0">
+        <div class="Logo1">
+            <img src="/static/images/telegram.png" alt="" width="42px" height="42px">
+        </div>
+        <div class="Logo2">
+            <img src="/static/images/vk.png" alt="" width="44px" height="35px">
+        </div>
+    </div>
+</body>
+</html>
