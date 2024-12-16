@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, Request, Form, HTTPException, Response
+from fastapi import FastAPI, Depends, Request, Form, HTTPException, Response, File, UploadFile
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -7,6 +7,7 @@ from app.database import engine, get_db
 from app.database import Base, engine
 from app.models import Base, User
 from passlib.context import CryptContext
+import os
 
 # Создаем таблицы в базе данных
 Base.metadata.create_all(bind=engine)
@@ -19,11 +20,19 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # Подключаем статические файлы
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
+UPLOAD_DIR = "app/static/uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_main(request: Request):
-    """Главная страница с кнопками для перехода на авторизацию и регистрацию"""
-    return templates.TemplateResponse("index.html", {"request": request})
+    """Главная страница с вариантами для авторизованных и неавторизованных пользователей"""
+    session_user = request.cookies.get("session_user")
+
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request, "session_user": session_user}
+    )
+
 
 
 @app.get("/auth/register", response_class=HTMLResponse)
@@ -163,3 +172,101 @@ async def choose_park(request: Request):
 
     # Если пользователь авторизован, отображаем страницу парковки
     return templates.TemplateResponse("parking.html", {"request": request})
+
+@app.get("/parking2", response_class=HTMLResponse)
+async def choose_park(request: Request):
+    """Страница выбора парковки (доступна после авторизации)"""
+    session_user = request.cookies.get("session_user")
+
+    # Если cookie с сессией пользователя нет (не авторизован), перенаправляем на страницу регистрации
+    if not session_user:
+        return RedirectResponse(url="/auth/register")
+
+    # Если пользователь авторизован, отображаем страницу парковки
+    return templates.TemplateResponse("parking2.html", {"request": request})
+
+@app.get("/parking3", response_class=HTMLResponse)
+async def choose_park(request: Request):
+    """Страница выбора парковки (доступна после авторизации)"""
+    session_user = request.cookies.get("session_user")
+
+    # Если cookie с сессией пользователя нет (не авторизован), перенаправляем на страницу регистрации
+    if not session_user:
+        return RedirectResponse(url="/auth/register")
+
+    # Если пользователь авторизован, отображаем страницу парковки
+    return templates.TemplateResponse("parking3.html", {"request": request})
+
+
+@app.get("/auth/profile", response_class=HTMLResponse)
+async def profile_page(request: Request, db: Session = Depends(get_db)):
+    """Отображение страницы профиля"""
+    session_user = request.cookies.get("session_user")
+    if not session_user:
+        return RedirectResponse(url="/", status_code=303)
+
+    user = db.query(User).filter(User.UserID == session_user).first()
+    if not user:
+        return RedirectResponse(url="/", status_code=303)
+
+    return templates.TemplateResponse("profile.html", {"request": request, "user": user})
+
+
+@app.post("/auth/profile/update", response_class=HTMLResponse)
+async def update_profile(
+        request: Request,
+        db: Session = Depends(get_db),
+        fio: str = Form(...),
+        gos: str = Form(...),
+        email: str = Form(...),
+        password: str = Form(...),
+        number: str = Form(...),
+        data: str = Form(...)
+):
+    """Обновление данных профиля"""
+    session_user = request.cookies.get("session_user")
+    if not session_user:
+        return RedirectResponse(url="/auth/login", status_code=303)
+
+    user = db.query(User).filter(User.UserID == session_user).first()
+    if not user:
+        return RedirectResponse(url="/auth/login", status_code=303)
+
+    user.FullName = fio
+    user.CarPlate = gos
+    user.email = email
+
+    # Хэширование нового пароля перед сохранением
+    if password:
+        user.password = pwd_context.hash(password)
+
+    user.phone_number = number
+    user.birth_date = data
+    db.commit()
+    return RedirectResponse(url="/auth/profile", status_code=303)
+
+
+@app.post("/auth/profile/photo/upload")
+async def upload_photo(file: UploadFile = File(...)):
+    """Загрузка фото профиля"""
+    file_path = os.path.join(UPLOAD_DIR, file.filename)
+    with open(file_path, "wb") as f:
+        f.write(await file.read())
+    return {"filename": file.filename}
+
+
+@app.post("/auth/profile/photo/delete")
+async def delete_photo():
+    """Удаление фото профиля"""
+    photo_path = os.path.join(UPLOAD_DIR, "photo.png")  # Замените именем текущего файла
+    if os.path.exists(photo_path):
+        os.remove(photo_path)
+    return {"message": "Фотография удалена"}
+
+
+@app.get("/logout", response_class=RedirectResponse)
+async def logout(response: RedirectResponse):
+    """Выход из профиля"""
+    response = RedirectResponse(url="/auth/login", status_code=303)
+    response.delete_cookie("session_user", httponly=True)
+    return response
