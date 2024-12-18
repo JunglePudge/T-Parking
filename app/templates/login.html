@@ -1,51 +1,218 @@
-<!-- app/templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Авторизация</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
+        .Middle {
+            background-color: rgb(233, 233, 233);
+            margin-top: 135px;
+            width: 100%;
+            height: 889px;
         }
-        h1 {
-            color: #333;
+        .Down {
+            background-color: #333333;
+            width: 100%;
+            height: 350px;
         }
-        .button-container {
-            margin-top: 20px;
+        .Image {
+            margin-top: -1335px;
+            margin-left: 21px;
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
+        .Text {
+            font: 24px Geologica;
+            margin-top: -80px;
+            margin-left: 85px;
+        }
+        a {
             text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            color: black;
         }
-        .button:hover {
-            background-color: #0056b3;
+        .Base {
+            width: 588px;
+            height: 549px;
+            background-color: white;
+            border-radius: 47px;
+            margin-top: 170px;
+            margin-left: 465px;
+            box-shadow: 10px 10px 5px darkgray;
+        }
+        input[name="email"],
+        input[name="password"] {
+            border-radius: 20px;
+            width: 458px;
+            height: 78px;
+            background-color: rgb(233, 233, 233);
+            border: none;
+            margin-top: 25px;
+            margin-left: 65px;
+            box-shadow: inset 3px 3px 5px darkgray;
+            font: 24px AkrobatLight;
+            color: #878787;
+            padding-left: 27px;
+        }
+        input[name="email"] {
+            margin-top: 177px;
+        }
+        .Button {
+            display: flex;
+        }
+        .Center {
+            margin-left: 690px;
+            width: 146px;
+            height: 46px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border-radius: 9px;
+            border: 2px solid gold;
+            margin-top: -160px;
+            margin-left: 690px;
+            cursor: pointer;
+        }
+        .Center:active {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .Firsttext {
+            font: 24px AkrobatLight;
+            margin-top: -480px;
+            margin-left: 550px;
+        }
+        .Secondtext {
+            font: 24px AkrobatLight;
+            margin-top: -53px;
+            margin-left: 630px;
+        }
+        .Line {
+            border-top: 3px solid #B3B3B3;
+            width: 450px;
+            margin-top: 370px;
+            margin-left: 535px;
+        }
+        .Imageup {
+            margin-top: 301px;
+            margin-left: 73px;
+        }
+        .Textup {
+            color: white;
+            font: 24px Geologica;
+            margin-left: 143px;
+            margin-top: -83px;
+        }
+        .First {
+            color: white;
+            margin-top: 45px;
+            margin-left: 82px;
+            font: 15px Abel;
+        }
+        .Second {
+            color: white;
+            margin-top: -34px;
+            margin-left: 207px;
+            font: 15px Abel;
+        }
+        .Third {
+            color: white;
+            margin-left: 82px;
+            margin-top: 40px;
+            margin-right: 25px;
+            font: 15px Abel;
+        }
+        .Line1 {
+            width: 1325px;
+            margin-left: 80px;
+            margin-top: 34px;
+            border-top: 3px solid rgb(95, 92, 92);
+        }
+        .Fourth {
+            color: white;
+            margin-left: 82px;
+            margin-top: 34px;
+            font: 15px Abel;
+        }
+        .Logo1 {
+            margin-left: 1248px;
+            margin-top: -45px;
+        }
+        .Logo2 {
+            margin-left: 1313px;
+            margin-top: -45px;
+        }
+        @font-face {
+            font-family: Geologica;
+            src: url("/static/fonts/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf");
+        }
+        @font-face {
+            font-family: AkrobatLight;
+            src: url("/static/fonts/Akrobat-Light.ttf");
+        }
+        @font-face {
+            font-family: Abel;
+            src: url("/static/fonts/abelrusbydaymarius.ttf");
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Our Website</h1>
-    <p>Please choose an option to continue:</p>
-    <div class="button-container">
-        <a href="/auth/login" class="button">Login</a>
-        <a href="/auth/register" class="button">Register</a>
+    <div class="Background">
+        <div class="Middle"></div>
+        <div class="Down"></div>
+    </div>
+    <div class="Logo">
+        <div class="Image">
+            <a href="/"><img src="/static/images/logo.JPG" alt="" width="62px" height="69px"></a>
+        </div>
+        <div class="Text">
+            <a href="/"><p><b>ПАРКОВКА</b></p></a>
+        </div>
+    </div>
+    <div class="Base">
+        <form action="/auth/login" method="post">
+            <input type="text" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Пароль">
+            <div class="Button">
+                <button type="submit" class="Center">Войти</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div class="Firsttext">
+            <p>Вход</p>
+        </div>
+        <div class="Secondtext">
+            <a href="/auth/register"><p>Регистрация</p></a>
+        </div>
+    </div>
+    <div class="Line"></div>
+    <div class="Logoup">
+        <div class="Imageup">
+            <img src="/static/images/logo3.png" alt="" width="69px" height="68px">
+        </div>
+        <div class="Textup">
+            <p><b>ПАРКОВКА</b></p>
+        </div>
+    </div>
+    <div class="Textdown">
+        <div class="First">
+            <p>О приложении</p>
+        </div>
+        <div class="Second">
+            <p>Контакты</p>
+        </div>
+        <div class="Third">
+            <p>При положительном решении платформы профиль будет подтвержден в день оформления заявки либо на следующий день...</p>
+        </div>
+        <div class="Line1"></div>
+        <div class="Fourth">
+            <p>© 2024—2024, АО «ТПарковка», официальный сайт...</p>
+        </div>
+    </div>
+    <div class="Twolog0">
+        <div class="Logo1">
+            <img src="/static/images/telegram.png" alt="" width="42px" height="42px">
+        </div>
+        <div class="Logo2">
+            <img src="/static/images/vk.png" alt="" width="44px" height="35px">
+        </div>
     </div>
 </body>
 </html>

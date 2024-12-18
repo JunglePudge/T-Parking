@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парковочные места</title>
+    <style>
+        .Middle
+        {
+            background-color: rgb(233, 233, 233);
+            margin-top: 135px;
+            width: 100%;
+            height: 889px;
+        }
+        .Down
+        {
+            background-color: #333333;
+            width: 100%;
+            height: 350px;
+        }
+
+        .Image
+        {
+            margin-top: -1335px;
+            margin-left: 21px;
+        }
+        .Text
+        {
+            font: 24px Geologica;
+            margin-top: -80px;
+            margin-left: 85px;
+        }
+
+        a
+        {
+            text-decoration: none;
+            color: black;
+        }
+
+        form[name="button"]
+        {
+            margin-top: -70px;
+            float: right;
+            margin-right: 70px;
+        }
+        .Button
+        {
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            width: 204px;
+            height: 49px;
+            font: 24px AkrobatLight;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .Button:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .Textpark
+        {
+            font: 24px AkrobatLight;
+            margin-left: 48px;
+            margin-top: 100px;
+        }
+
+        .Linepark
+        {
+            width: 180px;
+            border-top: 3px solid gold;
+            margin-top: -30px;
+            margin-left: 47px;
+
+        }
+
+        .Texts
+        {
+            font: 24px AkrobatLight;
+        }
+        .Text1
+        {
+            margin-left: 48px;
+        }
+        .Text2
+        {
+            margin-top: -54px;
+            margin-left: 130px;
+        }
+        .Text3
+        {
+            margin-top: -54px;
+            margin-left: 212px;
+        }
+
+        .Line1
+        {
+            width: 60px;
+            border-top: 3px solid gold;
+            margin-top: -30px;
+            margin-left: 47px;
+
+        }
+
+        .B1
+        {
+            width: 123px;
+            height: 203px;
+            background-color: greenyellow;
+            font: 24px AkrobatLight;
+            border: 2px solid greenyellow;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 150px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B1:active
+        {
+            box-shadow: inset 0px 0px 5px green;
+        }
+        .B1.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B2
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B2:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B2.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B3
+        {
+            width: 123px;
+            height: 203px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B3:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B3.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B4
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B4:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B4.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B5
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B5:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B5.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B6
+        {
+            width: 123px;
+            height: 203px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B6:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B7
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 150px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B7:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B7.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B8
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B8:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B8.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B9
+        {
+            width: 123px;
+            height: 203px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B9:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+        .B10
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B10:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B10.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B11
+        {
+            width: 123px;
+            height: 203px;
+            background-color: gold;
+            font: 24px AkrobatLight;
+            border: 2px solid gold;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B11:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(121, 74, 4);
+        }
+        .B11.black
+        {
+          background-color: #FF732D;
+          border: 3px solid #333333;
+        }
+        .B12
+        {
+            width: 123px;
+            height: 203px;
+            background-color: #FF732D;
+            font: 24px AkrobatLight;
+            border: 2px solid #FF732D;
+            border-radius: 11px;
+            cursor: pointer;
+            margin-top: 40px;
+            margin-left: 70px;
+            box-shadow: -1px 3px 5px darkgray;
+        }
+        .B12:active
+        {
+            box-shadow: inset 0px 0px 5px rgb(102, 2, 2);
+        }
+
+        .Imageup
+        {
+            margin-top: 300px;
+            margin-left: 73px;
+        }
+        .Textup
+        {
+            color: white;
+            font: 24px Geologica;
+            margin-left: 143px;
+            margin-top: -83px;
+        }
+
+        .First
+        {
+            color: white;
+            margin-top: 45px;
+            margin-left: 82px;
+            font: 15px Abel;
+        }
+        .Second
+        {
+            color: white;
+            margin-top: -34px;
+            margin-left: 207px;
+            font: 15px Abel;
+        }
+        .Third
+        {
+            color: white;
+            margin-left: 82px;
+            margin-top: 40px;
+            margin-right: 25px;
+            font: 15px Abel;
+        }
+        .Line
+        {
+            width: 1325px;
+            margin-left: 80px;
+            margin-top: 34px;
+            border-top: 3px solid rgb(95, 92, 92);
+        }
+        .Fourth
+        {
+            color: white;
+            margin-left: 82px;
+            margin-top: 34px;
+            font: 15px Abel;
+        }
+
+        .Logo1
+        {
+            margin-left: 1248px;
+            margin-top: -45px;
+        }
+        .Logo2
+        {
+            margin-left: 1313px;
+            margin-top: -45px;
+        }
+
+        .firstBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .firstModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .firstInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .firstModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .firstModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .firstModalbuttone
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .firstModalbuttone:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .firstBackmodalq
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .firstModalq
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .firstInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .firstModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .firstModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .secondBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .secondModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .secondInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .secondModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .secondModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .thirdBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .thirdModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .thirdInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .thirdModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .thirdModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .fourthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .fourthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .fourthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .fourthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .fourthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .fifthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .fifthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .fifthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .fifthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .fifthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .sixthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .sixthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .sixthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .sixthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .sixthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .seventhBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .seventhModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .seventhInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .seventhModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .seventhModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .eighthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .eighthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .eighthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .eighthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .eighthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .ninthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .ninthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .ninthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .ninthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .ninthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .tenthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .tenthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .tenthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .tenthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .tenthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .eleventhBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .eleventhModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .eleventhInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .eleventhModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .eleventhModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .twelfthBackmodal
+        {
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            display: flex;
+            cursor: pointer;
+        }
+        .twelfthModal
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .twelfthInmodal
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .twelfthModalbutton
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .twelfthModalbutton:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        .secondBackmodalq
+        {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        cursor: pointer;
+        }
+        .secondModalq
+        {
+        width: 600px;
+        height: 250px;
+        background-color: white;
+        margin: auto;
+        cursor: default;
+        border-radius: 11px;
+        }
+        .secondInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .secondModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+        height: 49px;
+        background-color: gold;
+        border-radius: 11px;
+        border: 2px solid gold;
+        cursor: pointer;
+        box-shadow: -1px 5px 5px darkgray;
+        }
+        .secondModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .fourthBackmodalq
+        {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        cursor: pointer;
+        }
+        .fourthModalq
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .fourthInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .fourthModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .fourthModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .fifthBackmodalq
+        {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        cursor: pointer;
+        }
+        .fifthModalq
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .fifthInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .fifthModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .fifthModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .seventhBackmodalq
+        {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        cursor: pointer;
+        }
+        .seventhModalq
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .seventhInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .seventhModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .seventhModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .eighthBackmodalq
+        {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        cursor: pointer;
+        }
+        .eighthModalq
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .eighthInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .eighthModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .eighthModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+        .eleventhBackmodalq
+        {
+        backdrop-filter: blur(5px);
+        position: fixed;
+        inset: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        cursor: pointer;
+        }
+        .eleventhModalq
+        {
+            width: 600px;
+            height: 250px;
+            background-color: white;
+            margin: auto;
+            cursor: default;
+            border-radius: 11px;
+        }
+        .eleventhInmodalq
+        {
+            text-align: center;
+            font: 24px AkrobatLight;
+        }
+        .eleventhModalbuttonq
+        {
+            font: 24px AkrobatLight;
+            width: 204px;
+            height: 49px;
+            background-color: gold;
+            border-radius: 11px;
+            border: 2px solid gold;
+            cursor: pointer;
+            box-shadow: -1px 5px 5px darkgray;
+        }
+        .eleventhModalbuttonq:active
+        {
+            box-shadow: inset 0 0 5px rgb(121, 74, 4);
+        }
+
+        @font-face
+        {
+
+            font-family: Geologica;
+            src: url(fonts/Geologica-VariableFont_CRSV\,SHRP\,slnt\,wght.ttf);
+        }
+        @font-face
+        {
+
+            font-family: AkrobatLight;
+            src: url(fonts/Akrobat-Light.ttf);
+        }
+        @font-face
+        {
+
+            font-family: Abel;
+            src: url(fonts/abelrusbydaymarius.ttf);
+        }
+    </style>
+</head>
+<body>
+    <div class="Background">
+        <div class="Middle"></div>
+        <div class="Down"></div>
+    </div>
+
+    <div class="Logo">
+        <div class="Image">
+            <a href="/"><img src="/static/images/logo.JPG" alt="" width="62px" height="69px"></a>
+        </div>
+        <div class="Text">
+            <a href="/"><p><b>ПАРКОВКА</b></p></a>
+        </div>
+    </div>
+
+    <div>
+        <form action="/auth/profile" name="button">
+            <button class="Button">Личный кабинет</button>
+        </form>
+    </div>
+
+    <div class="Textpark">
+        <p>Парковочные места</p>
+    </div>
+
+    <div class="Linepark"></div>
+
+<div class="Texts">    <div class="Text1">
+        <a href="/parking"><p>1 Этаж</p></a>    </div>
+    <div class="Text2">        <a href="/parking2"><p>2 Этаж</p></a>
+    </div>    <div class="Text3">
+       <p>3 Этаж</p>    </div>
+</div>
+
+    <div class="Line1"></div>
+
+    <div class="Buttons1">
+        <div class="Buttons1">
+        <button class="B1" onclick="openModal(1)">1</button>
+        <button class="B2" onclick="openModal(2)">2</button>
+        <button class="B3" onclick="openModal(3)">3</button>
+        <button class="B4" onclick="openModal(4)">4</button>
+        <button class="B5" onclick="openModal(5)">5</button>
+        <button class="B6" onclick="openModal(6)">6</button>
+    </div>
+    <div class="Buttons2">
+        <button class="B7" onclick="openModal(7)">7</button>
+        <button class="B8" onclick="openModal(8)">8</button>
+        <button class="B9" onclick="openModal(9)">9</button>
+        <button class="B10" onclick="openModal(10)">10</button>
+        <button class="B11" onclick="openModal(11)">11</button>
+        <button class="B12" onclick="openModal(12)">12</button>
+    </div>
+
+    <div class="Logoup">
+        <div class="Imageup">
+            <img src="/static/images/logo3.png" alt="" width="69px" height="68px">
+        </div>
+        <div class="Textup">
+            <p><b>ПАРКОВКА</b></p>
+        </div>
+    </div>
+
+    <div class="Textdown">
+        <div class="First">
+            <p>О приложении</p>
+        </div>
+        <div class="Second">
+            <p>Контакты</p>
+        </div>
+        <div class="Third">
+            <p>При положительном решении платформы профиль будет подтвержден в день оформления заявки либо на следующий день, за исключением регионов, где приложение не доступно. Уточнить информацию о перечне населенных пунктов, где приложение доступно , можно по каналам дистанционного обслуживания.</p>
+        </div>
+        <div class="Line"></div>
+        <div class="Fourth">
+            <p>© 2024—2024, АО «ТПарковка», официальный сайт, универсальная лицензия ЦБ РФ № 2673</p>
+        </div>
+    </div>
+
+    <div class="Twolog0">
+        <div class="Logo1">
+            <img src="/static/images/telegram.png" alt="" width="42px" height="42px">
+        </div>
+        <div class="Logo2">
+            <img src="/static/images/vk.png" alt="" width="44px" height="35px">
+        </div>
+    </div>
+
+    <div class="firstBackmodal">
+        <div class="firstModal">
+            <div class="firstInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="23">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="firstModalbutton">Подтвердить</button>
+                    <button type="button" class="firstModalbutton" onclick="closefirstModal('firstBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal1q" class='firstBackmodalq' style='display:none;'>
+        <div class='firstModalq'>
+            <div class='firstInmodalq'>
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <form action="/unbook_spot" method='post'>
+                    <input type='hidden' name='spot_id' value='23'>
+                    <input type='hidden' name='user_id' value="{{ request.cookies.get('session_user') }}">
+                    <button type='submit' class='firstModalbuttonq'>Подтвердить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="secondBackmodal">
+        <div class="secondModal">
+            <div class="secondInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="24">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="secondModalbutton">Подтвердить</button>
+                    <button type="button" class="secondModalbutton" onclick="closeModal('secondBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2q" class='secondBackmodalq' style='display:none;'>
+        <div class='secondModalq'>
+            <div class='secondInmodalq'>
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <form action="/unbook_spot" method='post'>
+                    <input type='hidden' name='spot_id' value='24'>
+                    <input type='hidden' name='user_id' value="{{ request.cookies.get('session_user') }}">
+                    <button type='submit' class='secondModalbuttonq'>Подтвердить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="thirdBackmodal">
+        <div class="thirdModal">
+            <div class="thirdInmodal">
+                <p>Это место занято!</p>
+                <p>Выберите, пожалуйста, другое.</p>
+                <button type="button" class="thirdModalbutton" onclick="closeModal('thirdBackmodal')">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fourthBackmodal">
+        <div class="fourthModal">
+            <div class="fourthInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="26">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="fourthModalbutton">Подтвердить</button>
+                    <button type="button" class="fourthModalbutton" onclick="closeModal('fourthBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="fourthBackmodalq">
+        <div class="fourthModalq">
+            <div class="fourthInmodalq">
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <button type="submit" class="fourthModalbuttonq">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="fifthBackmodal">
+        <div class="fifthModal">
+            <div class="fifthInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="26">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="fifthModalbutton">Подтвердить</button>
+                    <button type="button" class="fifthModalbutton" onclick="closeModal('fifthBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="fifthBackmodalq">
+        <div class="fifthModalq">
+            <div class="fifthInmodalq">
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <button type="submit" class="fifthModalbuttonq">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sixthBackmodal">
+        <div class="sixthModal">
+            <div class="sixthInmodal">
+                <p>Это место занято!</p>
+                <p>Выберите, пожалуйста, другое.</p>
+                <button type="button" class="sixthModalbutton" onclick="closeModal('sixthBackmodal')">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="seventhBackmodal">
+        <div class="seventhModal">
+            <div class="seventhInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="28">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="seventhModalbutton">Подтвердить</button>
+                    <button type="button" class="seventhModalbutton" onclick="closeModal('seventhBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="seventhBackmodalq">
+        <div class="seventhModalq">
+            <div class="seventhInmodalq">
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <button type="submit" class="seventhModalbuttonq">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="eighthBackmodal">
+        <div class="eighthModal">
+            <div class="eighthInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value=29">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="eighthModalbutton">Подтвердить</button>
+                    <button type="button" class="eighthModalbutton" onclick="closeModal('eighthBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="eighthBackmodalq">
+        <div class="eighthModalq">
+            <div class="eighthInmodalq">
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <button type="submit" class="eighthModalbuttonq">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ninthBackmodal">
+        <div class="ninthModal">
+            <div class="ninthInmodal">
+                <p>Это место занято!</p>
+                <p>Выберите, пожалуйста, другое.</p>
+                <button type="button" class="ninthModalbutton" onclick="closeModal('ninthBackmodal')">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="tenthBackmodal">
+        <div class="tenthModal">
+            <div class="tenthInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="30">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="tenthModalbutton">Подтвердить</button>
+                    <button type="button" class="tenthModalbutton" onclick="closeModal('tenthBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="tenthBackmodalq">
+        <div class="tenthModalq">
+            <div class="tenthInmodalq">
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <button type="submit" class="tenthModalbuttonq">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="eleventhBackmodal">
+        <div class="eleventhModal">
+            <div class="eleventhInmodal">
+                <p>Вы уверены, что хотите забронировать место?</p>
+                <p>Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+                <form action="/book_spot" method="post">
+                    <input type="hidden" name="spot_id" value="31">
+                    <input type="hidden" name="user_id" value="{{ request.cookies.get('session_user') }}">
+                    <button type="submit" class="eleventhModalbutton">Подтвердить</button>
+                    <button type="button" class="eleventhModalbutton" onclick="closeModal('eleventhBackmodal')">Закрыть</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="eleventhBackmodalq">
+        <div class="eleventhModalq">
+            <div class="eleventhInmodalq">
+                <p>Вы уверены, что хотите разбронировать место?</p>
+                <p>Оно станет свободным для остальных пользователей.</p>
+                <button type="submit" class="eleventhModalbuttonq">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="twelfthBackmodal">
+        <div class="twelfthModal">
+            <div class="twelfthInmodal">
+                <p>Это место занято!</p>
+                <p>Выберите, пожалуйста, другое.</p>
+                <button type="button" class="twelfthModalbutton" onclick="closeModal('twelfthBackmodal')">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    let firstButton = document.querySelector('.B1');
+    let secondButton = document.querySelector('.B2');
+    let firstRegistrationModal = document.querySelector('.firstBackmodal');
+    let firstRegistrationModalq = document.querySelector('.firstBackmodalq');
+    let secondRegistrationModal = document.querySelector('.secondBackmodal');
+    let secondRegistrationModalq = document.querySelector('.secondBackmodalq');
+
+    const confirmFirstButton = document.querySelector('.firstModalbutton');
+    const confirmFirstButtonq = document.querySelector('.firstModalbuttonq');
+    const confirmSecondButton = document.querySelector('.secondModalbutton');
+    const confirmSecondButtonq = document.querySelector('.secondModalbuttonq');
+
+    let firstCount = 1;
+    let secondCount = 1;
+
+    // Скрываем модальные окна при загрузке
+    firstRegistrationModal.style.display = 'none';
+    firstRegistrationModalq.style.display = 'none';
+    secondRegistrationModal.style.display = 'none';
+    secondRegistrationModalq.style.display = 'none';
+
+    const closeModal = (modal) => {
+        modal.style.opacity = 0;
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    };
+
+    const handleFirstButtonClick = () => {
+        firstCount++;
+        if (firstCount % 2 === 0) {
+            firstRegistrationModal.style.display = 'flex';
+            firstRegistrationModal.addEventListener('click', () => closeModal(firstRegistrationModal));
+            confirmFirstButton.addEventListener('click', () => {
+                firstButton.classList.add('black');
+                bookSpot(1);
+                closeModal(firstRegistrationModal);
+            });
+        } else {
+            firstRegistrationModalq.style.display = 'flex';
+            firstRegistrationModalq.addEventListener('click', () => closeModal(firstRegistrationModalq));
+            confirmFirstButtonq.addEventListener('click', () => {
+                firstButton.classList.remove('black');
+                unbookSpot(1);
+                closeModal(firstRegistrationModalq);
+            });
+        }
+    };
+
+    const handleSecondButtonClick = () => {
+        secondCount++;
+        if (secondCount % 2 === 0) {
+            secondRegistrationModal.style.display = 'flex';
+            secondRegistrationModal.addEventListener('click', () => closeModal(secondRegistrationModal));
+            confirmSecondButton.addEventListener('click', () => {
+                secondButton.classList.add('black');
+                bookSpot(2);
+                closeModal(secondRegistrationModal);
+            });
+        } else {
+            secondRegistrationModalq.style.display = 'flex';
+            secondRegistrationModalq.addEventListener('click', () => closeModal(secondRegistrationModalq));
+            confirmSecondButtonq.addEventListener('click', () => {
+                secondButton.classList.remove('black');
+                unbookSpot(2);
+                closeModal(secondRegistrationModalq);
+            });
+        }
+    };
+
+    firstButton.addEventListener('click', handleFirstButtonClick);
+    secondButton.addEventListener('click', handleSecondButtonClick);
+
+    // Функция для бронирования места
+    function bookSpot(spotId) {
+        const userId = {{ request.cookies.get("session_user") }};
+        fetch('/book_spot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                spot_id: spotId,
+                user_id: userId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+                updateButtonStates(data.spot_id, true); // Обновляем состояние кнопки
+            } else if (data.error) {
+                alert(data.error);
+            }
+        });
+    }
+
+    // Функция для освобождения места
+    function unbookSpot(spotId) {
+        const userId = {{ request.cookies.get("session_user") }};
+        fetch('/unbook_spot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                spot_id: spotId,
+                user_id: userId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+                updateButtonStates(data.spot_id, false); // Обновляем состояние кнопки
+            } else if (data.error) {
+                alert(data.error);
+            }
+        });
+    }
+
+    // Функция для обновления состояния кнопок на основе данных с сервера
+    function updateButtonStates(spotId, isBooked) {
+        const button = document.querySelector(`.B${spotId}`);
+        if (button) {
+            if (isBooked) {
+                button.classList.add('black'); // Добавляем класс для забронированного места
+            } else {
+                button.classList.remove('black'); // Убираем класс для освобожденного места
+            }
+        }
+    }
+
+    // Получение данных о парковочных местах с сервера при загрузке страницы
+    fetch('/choose_park')
+        .then(response => response.json())
+        .then(data => {
+            data.parking_spots.forEach(spot => updateButtonStates(spot.SpotID, spot.IsBooked));
+        });
+});
+
+
+
+
+
+
+
+        const thirdButton = document.querySelector('.B3');
+        const thirdRegistrationModal = document.querySelector('.thirdBackmodal');
+
+        thirdRegistrationModal.style.cssText = `
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        `;
+
+        const closeThirdModal = (event) =>
+        {
+            const clickedElement = event.target;
+            if (clickedElement.closest('.thirdModalbutton'))
+            {
+                thirdRegistrationModal.style.opacity = 0;
+                setTimeout(() =>
+                {
+                    thirdRegistrationModal.style.visibility = 'hidden';
+                }, 300);
+            }
+        };
+
+        thirdButton.addEventListener('click', () =>
+        {
+            thirdRegistrationModal.style.visibility = 'visible';
+            thirdRegistrationModal.style.opacity = 1;
+        });
+
+        thirdRegistrationModal.addEventListener('click', closeThirdModal);
+        document.querySelector('.thirdModalbutton').addEventListener('click', closeThirdModal);
+
+
+
+// Обработка четвертой кнопки
+let fourthButton = document.querySelector('.B4');
+let fourthRegistrationModal = document.querySelector('.fourthBackmodal');
+let fourthRegistrationModalq = document.querySelector('.fourthBackmodalq');
+const confirmFourthButton = document.querySelector('.fourthModalbutton');
+const confirmFourthButtonq = document.querySelector('.fourthModalbuttonq');
+let fourthCount = 1;
+
+fourthRegistrationModal.style.display = 'none';
+fourthRegistrationModalq.style.display = 'none';
+
+const closeFourthModal = (modal) => {
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+const handleFourthButtonClick = () => {
+    fourthCount++;
+    if (fourthCount % 2 === 0) {
+        fourthRegistrationModal.style.display = 'flex';
+        fourthRegistrationModal.addEventListener('click', () => closeFourthModal(fourthRegistrationModal));
+        confirmFourthButton.addEventListener('click', () => {
+            fourthButton.classList.add('black');
+            closeFourthModal(fourthRegistrationModal);
+        });
+    } else {
+        fourthRegistrationModalq.style.display = 'flex';
+        fourthRegistrationModalq.addEventListener('click', () => closeFourthModal(fourthRegistrationModalq));
+        confirmFourthButtonq.addEventListener('click', () => {
+            fourthButton.classList.remove('black');
+            closeFourthModal(fourthRegistrationModalq);
+        });
+    }
+};
+
+fourthButton.addEventListener('click', handleFourthButtonClick);
+
+// Обработка пятой кнопки
+let fifthButton = document.querySelector('.B5');
+let fifthRegistrationModal = document.querySelector('.fifthBackmodal');
+let fifthRegistrationModalq = document.querySelector('.fifthBackmodalq');
+const confirmFifthButton = document.querySelector('.fifthModalbutton');
+const confirmFifthButtonq = document.querySelector('.fifthModalbuttonq');
+let fifthCount = 1;
+
+fifthRegistrationModal.style.display = 'none';
+fifthRegistrationModalq.style.display = 'none';
+
+const closeFifthModal = (modal) => {
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+const handleFifthButtonClick = () => {
+    fifthCount++;
+    if (fifthCount % 2 === 0) {
+        fifthRegistrationModal.style.display = 'flex';
+        fifthRegistrationModal.addEventListener('click', () => closeFifthModal(fifthRegistrationModal));
+        confirmFifthButton.addEventListener('click', () => {
+            fifthButton.classList.add('black');
+            closeFifthModal(fifthRegistrationModal);
+        });
+    } else {
+        fifthRegistrationModalq.style.display = 'flex';
+        fifthRegistrationModalq.addEventListener('click', () => closeFifthModal(fifthRegistrationModalq));
+        confirmFifthButtonq.addEventListener('click', () => {
+            fifthButton.classList.remove('black');
+            closeFifthModal(fifthRegistrationModalq);
+        });
+    }
+};
+
+fifthButton.addEventListener('click', handleFifthButtonClick);
+
+
+
+
+        const sixthButton = document.querySelector('.B6');
+        const sixthRegistrationModal = document.querySelector('.sixthBackmodal');
+
+        sixthRegistrationModal.style.cssText = `
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        `;
+
+        const closeSixthModal = (event) =>
+        {
+            const clickedElement = event.target;
+            if (clickedElement.closest('.sixthModalbutton'))
+            {
+                sixthRegistrationModal.style.opacity = 0;
+                setTimeout(() =>
+                {
+                    sixthRegistrationModal.style.visibility = 'hidden';
+                }, 300);
+            }
+        };
+
+        sixthButton.addEventListener('click', () =>
+        {
+            sixthRegistrationModal.style.visibility = 'visible';
+            sixthRegistrationModal.style.opacity = 1;
+        });
+
+        sixthRegistrationModal.addEventListener('click', closeSixthModal);
+        document.querySelector('.sixthModalbutton').addEventListener('click', closeSixthModal);
+
+
+// Обработка седьмой кнопки
+let seventhButton = document.querySelector('.B7');
+let seventhRegistrationModal = document.querySelector('.seventhBackmodal');
+let seventhRegistrationModalq = document.querySelector('.seventhBackmodalq');
+const confirmSeventhButton = document.querySelector('.seventhModalbutton');
+const confirmSeventhButtonq = document.querySelector('.seventhModalbuttonq');
+let seventhCount = 1;
+
+seventhRegistrationModal.style.display = 'none';
+seventhRegistrationModalq.style.display = 'none';
+
+const closeSeventhModal = (modal) => {
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+const handleSeventhButtonClick = () => {
+    seventhCount++;
+    if (seventhCount % 2 === 0) {
+        seventhRegistrationModal.style.display = 'flex';
+        seventhRegistrationModal.addEventListener('click', () => closeSeventhModal(seventhRegistrationModal));
+        confirmSeventhButton.addEventListener('click', () => {
+            seventhButton.classList.add('black');
+            closeSeventhModal(seventhRegistrationModal);
+        });
+    } else {
+        seventhRegistrationModalq.style.display = 'flex';
+        seventhRegistrationModalq.addEventListener('click', () => closeSeventhModal(seventhRegistrationModalq));
+        confirmSeventhButtonq.addEventListener('click', () => {
+            seventhButton.classList.remove('black');
+            closeSeventhModal(seventhRegistrationModalq);
+        });
+    }
+};
+
+seventhButton.addEventListener('click', handleSeventhButtonClick);
+
+// Обработка восьмой кнопки
+let eighthButton = document.querySelector('.B8');
+let eighthRegistrationModal = document.querySelector('.eighthBackmodal');
+let eighthRegistrationModalq = document.querySelector('.eighthBackmodalq');
+const confirmEighthButton = document.querySelector('.eighthModalbutton');
+const confirmEighthButtonq = document.querySelector('.eighthModalbuttonq');
+let eighthCount = 1;
+
+eighthRegistrationModal.style.display = 'none';
+eighthRegistrationModalq.style.display = 'none';
+
+const closeEighthModal = (modal) => {
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+const handleEighthButtonClick = () => {
+    eighthCount++;
+    if (eighthCount % 2 === 0) {
+        eighthRegistrationModal.style.display = 'flex';
+        eighthRegistrationModal.addEventListener('click', () => closeEighthModal(eighthRegistrationModal));
+        confirmEighthButton.addEventListener('click', () => {
+            eighthButton.classList.add('black');
+            closeEighthModal(eighthRegistrationModal);
+        });
+    } else {
+        eighthRegistrationModalq.style.display = 'flex';
+        eighthRegistrationModalq.addEventListener('click', () => closeEighthModal(eighthRegistrationModalq));
+        confirmEighthButtonq.addEventListener('click', () => {
+            eighthButton.classList.remove('black');
+            closeEighthModal(eighthRegistrationModalq);
+        });
+    }
+};
+
+eighthButton.addEventListener('click', handleEighthButtonClick);
+
+
+
+
+        const ninthButton = document.querySelector('.B9');
+        const ninthRegistrationModal = document.querySelector('.ninthBackmodal');
+
+        ninthRegistrationModal.style.cssText = `
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        `;
+
+        const closeNinthModal = (event) =>
+        {
+            const clickedElement = event.target;
+            if (clickedElement.closest('.ninthModalbutton'))
+            {
+                ninthRegistrationModal.style.opacity = 0;
+                setTimeout(() =>
+                {
+                    ninthRegistrationModal.style.visibility = 'hidden';
+                }, 300);
+            }
+        };
+
+        ninthButton.addEventListener('click', () =>
+        {
+            ninthRegistrationModal.style.visibility = 'visible';
+            ninthRegistrationModal.style.opacity = 1;
+        });
+
+        ninthRegistrationModal.addEventListener('click', closeNinthModal);
+        document.querySelector('.ninthModalbutton').addEventListener('click', closeNinthModal);
+
+
+// Обработка десятой кнопки
+let tenthButton = document.querySelector('.B10');
+let tenthRegistrationModal = document.querySelector('.tenthBackmodal');
+let tenthRegistrationModalq = document.querySelector('.tenthBackmodalq');
+const confirmTenthButton = document.querySelector('.tenthModalbutton');
+const confirmTenthButtonq = document.querySelector('.tenthModalbuttonq');
+let tenthCount = 1;
+
+tenthRegistrationModal.style.display = 'none';
+tenthRegistrationModalq.style.display = 'none';
+
+const closeTenthModal = (modal) => {
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+const handleTenthButtonClick = () => {
+    tenthCount++;
+    if (tenthCount % 2 === 0) {
+        tenthRegistrationModal.style.display = 'flex';
+        tenthRegistrationModal.addEventListener('click', () => closeTenthModal(tenthRegistrationModal));
+        confirmTenthButton.addEventListener('click', () => {
+            tenthButton.classList.add('black');
+            closeTenthModal(tenthRegistrationModal);
+        });
+    } else {
+        tenthRegistrationModalq.style.display = 'flex';
+        tenthRegistrationModalq.addEventListener('click', () => closeTenthModal(tenthRegistrationModalq));
+        confirmTenthButtonq.addEventListener('click', () => {
+            tenthButton.classList.remove('black');
+            closeTenthModal(tenthRegistrationModalq);
+        });
+    }
+};
+
+tenthButton.addEventListener('click', handleTenthButtonClick);
+
+// Обработка одиннадцатой кнопки
+let eleventhButton = document.querySelector('.B11');
+let eleventhRegistrationModal = document.querySelector('.eleventhBackmodal');
+let eleventhRegistrationModalq = document.querySelector('.eleventhBackmodalq');
+const confirmEleventhButton = document.querySelector('.eleventhModalbutton');
+const confirmEleventhButtonq = document.querySelector('.eleventhModalbuttonq');
+let eleventhCount = 1;
+
+eleventhRegistrationModal.style.display = 'none';
+eleventhRegistrationModalq.style.display = 'none';
+
+const closeEleventhModal = (modal) => {
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+const handleEleventhButtonClick = () => {
+    eleventhCount++;
+    if (eleventhCount % 2 === 0) {
+        eleventhRegistrationModal.style.display = 'flex';
+        eleventhRegistrationModal.addEventListener('click', () => closeEleventhModal(eleventhRegistrationModal));
+        confirmEleventhButton.addEventListener('click', () => {
+            eleventhButton.classList.add('black');
+            closeEleventhModal(eleventhRegistrationModal);
+        });
+    } else {
+        eleventhRegistrationModalq.style.display = 'flex';
+        eleventhRegistrationModalq.addEventListener('click', () => closeEleventhModal(eleventhRegistrationModalq));
+        confirmEleventhButtonq.addEventListener('click', () => {
+            eleventhButton.classList.remove('black');
+            closeEleventhModal(eleventhRegistrationModalq);
+        });
+    }
+};
+
+eleventhButton.addEventListener('click', handleEleventhButtonClick);
+
+
+
+        const twelfthButton = document.querySelector('.B12');
+        const twelfthRegistrationModal = document.querySelector('.twelfthBackmodal');
+
+        twelfthRegistrationModal.style.cssText = `
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        `;
+
+        const closeTwelfthModal = (event) =>
+        {
+            const clickedElement = event.target;
+            if (clickedElement.closest('.twelfthModalbutton'))
+            {
+                twelfthRegistrationModal.style.opacity = 0;
+                setTimeout(() =>
+                {
+                    twelfthRegistrationModal.style.visibility = 'hidden';
+                }, 300);
+            }
+        };
+
+        twelfthButton.addEventListener('click', () =>
+        {
+            twelfthRegistrationModal.style.visibility = 'visible';
+            twelfthRegistrationModal.style.opacity = 1;
+        });
+
+        twelfthRegistrationModal.addEventListener('click', closeTwelfthModal);
+        document.querySelector('.twelfthModalbutton').addEventListener('click', closeTwelfthModal);
+    </script>
+</body>
+</html>
