@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Парковочные места</title>
     <style>
-        .Middle
-        {
+                .Middle {
             background-color: rgb(233, 233, 233);
             margin-top: 135px;
             width: 100%;
             height: 889px;
         }
-        .Down
-        {
+        .Down {
             background-color: #333333;
             width: 100%;
             height: 350px;
         }
-
         .Image
         {
             margin-top: -1335px;
@@ -837,6 +834,63 @@
             box-shadow: inset 0 0 5px rgb(121, 74, 4);
         }
 
+        .spot-free {
+            background-color: greenyellow;
+            border: 2px solid greenyellow;
+        }
+        .spot-booked {
+            background-color: #FF732D;
+            border: 2px solid #FF732D;
+            cursor: not-allowed;
+        }
+        .spot-my-booking {
+            background-color: gold;
+            border: 2px solid gold;
+        }
+        .spot-disabled {
+            background-color: #cccccc;
+            border: 2px solid #cccccc;
+            cursor: not-allowed;
+        }
+
+        .firstBackmodal,
+        .secondBackmodal,
+        .thirdBackmodal,
+        .fourthBackmodal,
+        .fifthBackmodal,
+        .sixthBackmodal,
+        .seventhBackmodal,
+        .eighthBackmodal,
+        .ninthBackmodal,
+        .tenthBackmodal,
+        .eleventhBackmodal,
+        .twelfthBackmodal {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        .modal-backdrop {
+            display: none;
+            backdrop-filter: blur(5px);
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 11px;
+            text-align: center;
+            min-width: 400px;
+        }
+
+
+
         @font-face 
         {
 
@@ -903,20 +957,31 @@
     </div>
 
     <div class="Buttons1">
-        <button class="B1">1</button>
-        <button class="B2">2</button>
-        <button class="B3">3</button>
-        <button class="B4">4</button>
-        <button class="B5">5</button>
-        <button class="B6">6</button>
+        <button class="B1 spot-button" data-spot-id="1">1</button>
+        <button class="B2 spot-button" data-spot-id="2">2</button>
+        <button class="B3 spot-button" data-spot-id="3">3</button>
+        <button class="B4 spot-button" data-spot-id="4">4</button>
+        <button class="B5 spot-button" data-spot-id="5">5</button>
+        <button class="B6 spot-button" data-spot-id="6">6</button>
     </div>
     <div class="Buttons2">
-        <button class="B7">7</button>
-        <button class="B8">8</button>
-        <button class="B9">9</button>
-        <button class="B10">10</button>
-        <button class="B11">11</button>
-        <button class="B12">12</button>
+        <button class="B7 spot-button" data-spot-id="7">7</button>
+        <button class="B8 spot-button" data-spot-id="8">8</button>
+        <button class="B9 spot-button" data-spot-id="9">9</button>
+        <button class="B10 spot-button" data-spot-id="10">10</button>
+        <button class="B11 spot-button" data-spot-id="11">11</button>
+        <button class="B12 spot-button" data-spot-id="12">12</button>
+    </div>
+
+    <div class="modal-backdrop" id="bookingModal">
+        <div class="modal-content">
+            <p id="modalMessage">Вы уверены, что хотите забронировать место?</p>
+            <p id="modalDescription">Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.</p>
+            <div>
+                <button class="modal-confirm-btn" id="modalConfirm">Подтвердить</button>
+                <button class="modal-cancel-btn" id="modalCancel">Отмена</button>
+            </div>
+        </div>
     </div>
 
     <div class="Logoup">
@@ -1074,400 +1139,163 @@
         </div>
     </div>
     <script>
-        const firstButton = document.querySelector('.B1');
-        const firstregistrationModal = document.querySelector('.firstBackmodal');
+        let currentUserId = null;
+        let currentSpotId = null;
+        let currentAction = null; // 'book' или 'unbook'
 
-        firstregistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
+        // Функции для работы с API
+        async function bookSpot(spotId) {
+            try {
+                const response = await fetch('/book_spot', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ spot_id: spotId })
+                });
 
-        const closefirstModal = (event) =>
-        {
-        const clickedElement = event.target;
-        if (clickedElement.closest('.firstModalbutton'))
-        {
-            firstregistrationModal.style.opacity = 0;
-            setTimeout(() =>
-            {
-                firstregistrationModal.style.visibility = 'hidden';
-            }, 300);
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Место успешно забронировано!');
+                    loadParkingStatus();
+                } else {
+                    alert('Ошибка: ' + (result.detail || 'Неизвестная ошибка'));
+                }
+            } catch (error) {
+                alert('Ошибка сети: ' + error.message);
+            }
         }
-        };
 
-        firstButton.addEventListener('click', () =>
-        {
-            firstregistrationModal.style.visibility = 'visible';
-            firstregistrationModal.style.opacity = 1;
-        });
+        async function unbookSpot(spotId) {
+            try {
+                const response = await fetch('/unbook_spot', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ spot_id: spotId })
+                });
 
-        firstregistrationModal.addEventListener('click', closefirstModal);
-        document.querySelector('.firstModalbutton').addEventListener('click', closefirstModal);
+                const result = await response.json();
 
-
-        const secondButton = document.querySelector('.B2');
-        const secondRegistrationModal = document.querySelector('.secondBackmodal');
-
-        secondRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeSecondModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.secondModalbutton'))
-            {
-                secondRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    secondRegistrationModal.style.visibility = 'hidden';
-                }, 300);
+                if (response.ok) {
+                    alert('Бронирование отменено!');
+                    loadParkingStatus();
+                } else {
+                    alert('Ошибка: ' + (result.detail || 'Неизвестная ошибка'));
+                }
+            } catch (error) {
+                alert('Ошибка сети: ' + error.message);
             }
-        };
+        }
 
-        secondButton.addEventListener('click', () =>
-        {
-            secondRegistrationModal.style.visibility = 'visible';
-            secondRegistrationModal.style.opacity = 1;
-        });
+        // Функция для загрузки статуса парковочных мест
+        async function loadParkingStatus() {
+            try {
+                const response = await fetch('/parking_status');
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки статуса');
+                }
 
-        secondRegistrationModal.addEventListener('click', closeSecondModal);
-        document.querySelector('.secondModalbutton').addEventListener('click', closeSecondModal);
+                const data = await response.json();
+                updateParkingSpots(data.parking_spots, data.user_id);
 
-
-        const thirdButton = document.querySelector('.B3');
-        const thirdRegistrationModal = document.querySelector('.thirdBackmodal');
-
-        thirdRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeThirdModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.thirdModalbutton'))
-            {
-                thirdRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    thirdRegistrationModal.style.visibility = 'hidden';
-                }, 300);
+            } catch (error) {
+                console.error('Ошибка загрузки статуса парковки:', error);
+                setDefaultStatus();
             }
-        };
+        }
 
-        thirdButton.addEventListener('click', () =>
-        {
-            thirdRegistrationModal.style.visibility = 'visible';
-            thirdRegistrationModal.style.opacity = 1;
-        });
+        function setDefaultStatus() {
+            const spotButtons = document.querySelectorAll('.spot-button');
+            spotButtons.forEach(button => {
+                button.classList.add('spot-free');
+                button.onclick = () => showBookingModal(parseInt(button.getAttribute('data-spot-id')), 'book');
+            });
+        }
 
-        thirdRegistrationModal.addEventListener('click', closeThirdModal);
-        document.querySelector('.thirdModalbutton').addEventListener('click', closeThirdModal);
+        function updateParkingSpots(spots, userId) {
+            currentUserId = userId;
+            const spotButtons = document.querySelectorAll('.spot-button');
 
+            spotButtons.forEach(button => {
+                const spotId = parseInt(button.getAttribute('data-spot-id'));
+                const spot = spots.find(s => s.SpotID === spotId);
 
-        const fourthButton = document.querySelector('.B4');
-        const fourthRegistrationModal = document.querySelector('.fourthBackmodal');
+                button.classList.remove('spot-free', 'spot-booked', 'spot-my-booking', 'spot-disabled');
+                button.onclick = null;
 
-        fourthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
+                if (spot) {
+                    if (spot.IsBooked) {
+                        if (spot.UserID === userId) {
+                            button.classList.add('spot-my-booking');
+                            button.onclick = () => showBookingModal(spotId, 'unbook');
+                        } else {
+                            button.classList.add('spot-booked');
+                            button.onclick = () => alert('Это место уже занято другим пользователем');
+                        }
+                    } else {
+                        button.classList.add('spot-free');
+                        button.onclick = () => showBookingModal(spotId, 'book');
+                    }
+                } else {
+                    button.classList.add('spot-disabled');
+                }
+            });
+        }
 
-        const closeFourthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.fourthModalbutton'))
-            {
-                fourthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    fourthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
+        function showBookingModal(spotId, action) {
+            currentSpotId = spotId;
+            currentAction = action;
+            const modal = document.getElementById('bookingModal');
+            const message = document.getElementById('modalMessage');
+            const description = document.getElementById('modalDescription');
+
+            if (action === 'book') {
+                message.textContent = `Вы уверены, что хотите забронировать место №${spotId}?`;
+                description.textContent = 'Другие пользователи не смогут воспользоваться им, пока вы не отмените бронирование.';
+            } else {
+                message.textContent = `Вы уверены, что хотите отменить бронирование места №${spotId}?`;
+                description.textContent = 'После отмены место станет доступно для бронирования другими пользователями.';
             }
-        };
 
-        fourthButton.addEventListener('click', () =>
-        {
-            fourthRegistrationModal.style.visibility = 'visible';
-            fourthRegistrationModal.style.opacity = 1;
+            modal.style.display = 'flex';
+        }
+
+        function hideModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Настраиваем обработчики универсального модального окна
+            document.getElementById('modalConfirm').addEventListener('click', function() {
+                if (currentSpotId && currentAction) {
+                    if (currentAction === 'book') {
+                        bookSpot(currentSpotId);
+                    } else {
+                        unbookSpot(currentSpotId);
+                    }
+                }
+                hideModal();
+            });
+
+            document.getElementById('modalCancel').addEventListener('click', hideModal);
+
+            // Закрытие модального окна по клику на фон
+            document.getElementById('bookingModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideModal();
+                }
+            });
+
+            // Загружаем статус парковочных мест
+            loadParkingStatus();
         });
 
-        fourthRegistrationModal.addEventListener('click', closeFourthModal);
-        document.querySelector('.fourthModalbutton').addEventListener('click', closeFourthModal);
-
-
-        const fifthButton = document.querySelector('.B5');
-        const fifthRegistrationModal = document.querySelector('.fifthBackmodal');
-
-        fifthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeFifthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.fifthModalbutton'))
-            {
-                fifthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    fifthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        fifthButton.addEventListener('click', () =>
-        {
-            fifthRegistrationModal.style.visibility = 'visible';
-            fifthRegistrationModal.style.opacity = 1;
-        });
-
-        fifthRegistrationModal.addEventListener('click', closeFifthModal);
-        document.querySelector('.fifthModalbutton').addEventListener('click', closeFifthModal);
-
-
-        const sixthButton = document.querySelector('.B6');
-        const sixthRegistrationModal = document.querySelector('.sixthBackmodal');
-
-        sixthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeSixthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.sixthModalbutton'))
-            {
-                sixthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    sixthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        sixthButton.addEventListener('click', () =>
-        {
-            sixthRegistrationModal.style.visibility = 'visible';
-            sixthRegistrationModal.style.opacity = 1;
-        });
-
-        sixthRegistrationModal.addEventListener('click', closeSixthModal);
-        document.querySelector('.sixthModalbutton').addEventListener('click', closeSixthModal);
-
-
-        const seventhButton = document.querySelector('.B7');
-        const seventhRegistrationModal = document.querySelector('.seventhBackmodal');
-
-        seventhRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeSeventhModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.seventhModalbutton'))
-            {
-                seventhRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    seventhRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        seventhButton.addEventListener('click', () =>
-        {
-            seventhRegistrationModal.style.visibility = 'visible';
-            seventhRegistrationModal.style.opacity = 1;
-        });
-
-        seventhRegistrationModal.addEventListener('click', closeSeventhModal);
-        document.querySelector('.seventhModalbutton').addEventListener('click', closeSeventhModal);
-
-
-        const eighthButton = document.querySelector('.B8');
-        const eighthRegistrationModal = document.querySelector('.eighthBackmodal');
-
-        eighthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeEighthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.eighthModalbutton'))
-            {
-                eighthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    eighthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        eighthButton.addEventListener('click', () =>
-        {
-            eighthRegistrationModal.style.visibility = 'visible';
-            eighthRegistrationModal.style.opacity = 1;
-        });
-
-        eighthRegistrationModal.addEventListener('click', closeEighthModal);
-        document.querySelector('.eighthModalbutton').addEventListener('click', closeEighthModal);
-
-
-        const ninthButton = document.querySelector('.B9');
-        const ninthRegistrationModal = document.querySelector('.ninthBackmodal');
-
-        ninthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeNinthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.ninthModalbutton'))
-            {
-                ninthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    ninthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        ninthButton.addEventListener('click', () =>
-        {
-            ninthRegistrationModal.style.visibility = 'visible';
-            ninthRegistrationModal.style.opacity = 1;
-        });
-
-        ninthRegistrationModal.addEventListener('click', closeNinthModal);
-        document.querySelector('.ninthModalbutton').addEventListener('click', closeNinthModal);
-
-
-        const tenthButton = document.querySelector('.B10');
-        const tenthRegistrationModal = document.querySelector('.tenthBackmodal');
-
-        tenthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeTenthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.tenthModalbutton'))
-            {
-                tenthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    tenthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        tenthButton.addEventListener('click', () =>
-        {
-            tenthRegistrationModal.style.visibility = 'visible';
-            tenthRegistrationModal.style.opacity = 1;
-        });
-
-        tenthRegistrationModal.addEventListener('click', closeTenthModal);
-        document.querySelector('.tenthModalbutton').addEventListener('click', closeTenthModal);
-
-
-        const eleventhButton = document.querySelector('.B11');
-        const eleventhRegistrationModal = document.querySelector('.eleventhBackmodal');
-
-        eleventhRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeEleventhModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.eleventhModalbutton'))
-            {
-                eleventhRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    eleventhRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        eleventhButton.addEventListener('click', () =>
-        {
-            eleventhRegistrationModal.style.visibility = 'visible';
-            eleventhRegistrationModal.style.opacity = 1;
-        });
-
-        eleventhRegistrationModal.addEventListener('click', closeEleventhModal);
-        document.querySelector('.eleventhModalbutton').addEventListener('click', closeEleventhModal);
-
-
-        const twelfthButton = document.querySelector('.B12');
-        const twelfthRegistrationModal = document.querySelector('.twelfthBackmodal');
-
-        twelfthRegistrationModal.style.cssText = `
-            display: flex;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 300ms ease-in-out;
-        `;
-
-        const closeTwelfthModal = (event) =>
-        {
-            const clickedElement = event.target;
-            if (clickedElement.closest('.twelfthModalbutton'))
-            {
-                twelfthRegistrationModal.style.opacity = 0;
-                setTimeout(() =>
-                {
-                    twelfthRegistrationModal.style.visibility = 'hidden';
-                }, 300);
-            }
-        };
-
-        twelfthButton.addEventListener('click', () =>
-        {
-            twelfthRegistrationModal.style.visibility = 'visible';
-            twelfthRegistrationModal.style.opacity = 1;
-        });
-
-        twelfthRegistrationModal.addEventListener('click', closeTwelfthModal);
-        document.querySelector('.twelfthModalbutton').addEventListener('click', closeTwelfthModal);
+        setInterval(loadParkingStatus, 30000);
     </script>
 </body>
 </html>

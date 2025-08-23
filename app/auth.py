@@ -9,7 +9,7 @@ import datetime
 
 router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-SECRET_KEY = "your_secret_key"
+SECRET_KEY = "key"
 
 # Регистрация пользователя
 @router.post("/register", response_class=HTMLResponse)
