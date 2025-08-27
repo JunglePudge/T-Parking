@@ -7,3 +7,4 @@ python-multipart
 jwt
 datetime
 passlib
+httpx
